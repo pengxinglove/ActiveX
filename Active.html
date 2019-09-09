@@ -1,0 +1,53 @@
+<!DOCTYPE>
+
+<html>
+
+   <head>
+
+          <title>ActiveX webpage</title>
+
+   </head>
+
+   <body>
+<input type="button" value="Click me1" onclick=Click() >
+<input type="button" value="Click me2">
+<input type="button" value="Click me3">
+       <OBJECT id="ActiveX" classid="clsid:EDBFDE1E-5A09-4982-A638-91788B827716" codebase="ActiveX_Web.cab"></OBJECT>  
+
+ 
+ 
+
+        <script type="text/javascript">
+		function Click(){
+		
+		 try {
+
+                var obj = document.ActiveX;
+
+                if (obj) {
+
+                    alert(obj.SayHello());
+
+                } else {
+
+                    alert("Object is not created!");
+
+                }
+
+            } catch (ex) {
+
+                alert("Some error happens, error message is: " + ex.Description);
+
+            }
+		
+		}
+
+           
+
+       
+
+        </script>
+
+   </body>
+
+</html>
