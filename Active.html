@@ -1,32 +1,128 @@
 <!DOCTYPE>
 
 <html>
+<head>
+    <title>ActiveX webpage</title>
+	<script src="C:\Users\Vissu\Desktop\jquery-1.10.2.js""></script>
+</head>
+<body>
+<div>
+    <select id="ddlDeviceInfo"><option value="0">--Select Device--</option></select>
+	<br\>
+	<br\>
+	</div>
+	<div>
+	 <select id="ddlSequences">
+	 <option value="0">--NONE--</option>
+	 <option value="0">SINGLE_FINGER</option>
+	 <option value="0">FLAT SINGLE FINGER</option>
+	 <option value="0">FLAT RIGHT FINGERS</option> 
+	 <option value="0">FLAT LEFT FINGERS</option>
+	 <option value="0">FLAT TWO THUMBS</option>
+	 <option value="0">PALM RIGHT FULL</option>
+	 <option value="0">PALM RIGHT WRITERS</option>
+	 <option value="0">PALM RIGHT LOWER</option>
+	 <option value="0">PALM RIGHT UPPER</option> 
+	 <option value="0">PALM LEFT FULL</option>
+	 <option value="0">PALM LEFT WRITERS</option>
+	 <option value="0">PALM LEFT LOWER</option>
+	 <option value="0">PALM LEFT UPPER</option>
+	 <option value="0">FLAT TWO FINGERS</option>
+	 <option value="0">SINGLE FINGER VERTICAL</option>
+	 
+	 
+	 
+	 </select>
+	 </div>
+	 <div>
+	 
+	 <button onclick="setDeviceReady()">Start</button>
+	 </div>
+	 
+	 <div>
+	 
+	 <button onclick="takeResultImage()">Cappture</button>
+	 </div>
+    <OBJECT id="ActiveX" classid="clsid:EDBFDE1E-5A09-4982-A638-91788B827711" codebase="ActiveX_Web.cab"></OBJECT>
 
-   <head>
 
-          <title>ActiveX webpage</title>
+    <script type="text/javascript">
 
-   </head>
 
-   <body>
-<input type="button" value="Click me1" onclick=Click() >
-<input type="button" value="Click me2">
-<input type="button" value="Click me3">
-       <OBJECT id="ActiveX" classid="clsid:EDBFDE1E-5A09-4982-A638-91788B827716" codebase="ActiveX_Web.cab"></OBJECT>  
+        try {
 
- 
- 
+            var obj = document.ActiveX;
 
-        <script type="text/javascript">
-		function Click(){
-		
-		 try {
+            if (obj) {
+			
+
+                if (obj.DeviceCount() > 0) {
+					
+                    DeviceName  = obj.DeviceInfo();
+					var ele = document.getElementById('ddlDeviceInfo');
+					ele.innerHTML = ele.innerHTML +
+                '<option value="1">' + DeviceName + '</option>';
+				}
+                else { alert('No deive foound'); }
+
+            } else {
+
+                alert("Object is not created!");
+
+            }
+
+        } catch (ex) {
+
+            alert("Some error happens, error message is: " + ex.Description);
+
+        }
+
+function setDeviceReady(){
+debugger;
+ var obj = document.ActiveX;
+ if (obj) {
+ int result =  obj.SetDeviceReady();
+ alert(result)
+  }
+   else {
+
+                alert("Object is not created!");
+
+            }
+			
+			
+}
+
+function takeResultImage(){
+var obj = document.ActiveX;
+ if (obj) {
+ int result =  obj.TakeResultImage();
+ alert(result)
+  }
+   else {
+
+                alert("Object is not created!");
+
+            }
+			
+			
+}
+
+
+
+}
+ </script>
+
+    <script type="text/javascript">
+        function Click2() {
+
+            try {
 
                 var obj = document.ActiveX;
 
                 if (obj) {
 
-                    alert(obj.SayHello());
+                    alert(obj.Intialize());
 
                 } else {
 
@@ -39,15 +135,48 @@
                 alert("Some error happens, error message is: " + ex.Description);
 
             }
-		
-		}
 
-           
+        }
 
-       
 
-        </script>
 
-   </body>
 
-</html>
+
+
+    </script>
+
+    <script type="text/javascript">
+        function Click3() {
+
+            try {
+
+                var obj = document.ActiveX;
+
+                if (obj) {
+
+                    alert(obj.DeviceInfo());
+
+                } else {
+
+                    alert("Object is not created!");
+
+                }
+
+            } catch (ex) {
+
+                alert("Some error happens, error message is: " + ex.Description);
+
+            }
+
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+
+
